@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package br.ufpb.threadControl.MessengerConcurrent.Runnable;
+
+import br.ufpb.threadControl.MessengerConcurrent.Entity.Product;
+import br.ufpb.threadControl.MessengerConcurrent.Manager.ManagerProduct;
+
+/**
+ * Runnable Edit Product
+ * 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 1.0 Copyright (C) 2012 Diego Sousa de Azevedo
+ */
+
+public class RunnableEditProduct implements Runnable {
+	private ManagerProduct productManager;
+	private Product product;
+
+	public RunnableEditProduct(ManagerProduct manager, Product product) {
+		this.productManager = manager;
+		this.product = product;
+	}
+
+	@Override
+	public void run() {
+		this.productManager.editProduct(product);
+	}
+}
