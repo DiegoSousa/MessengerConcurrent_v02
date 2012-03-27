@@ -10,11 +10,11 @@ More Information: http://goo.gl/8Ywy1
 
 <h1>Requirements:
 
-Apache Tomcat 7+
-JDK 6+
-Eclipse Java EE indigo+
-AJDT (AspectJ Development Tools)¹
-JUnit 4²
+Apache Tomcat 7+<br />
+JDK 6+<br />
+Eclipse Java EE indigo+<br />
+AJDT (AspectJ Development Tools)¹<br />
+JUnit 4²<br />
  
 ¹To install AJDT:
 
@@ -48,16 +48,20 @@ The End!
 
 The End!
 
+Doubts?
 
-<h1>Tutorial Versão Português:
+Contact diego@diegosousa.com
+
+
+<h1>Tutorial Versão em Português:
 
 Requisitos:
 
-Apache Tomcat 7+
-JDK 6+
-Eclipse Java EE indigo+
-AJDT (AspectJ Development Tools)¹
-JUnit 4²
+Apache Tomcat 7+<br />
+JDK 6+<br />
+Eclipse Java EE indigo+<br />
+AJDT (AspectJ Development Tools)¹<br />
+JUnit 4²<br />
  
 ¹ Para instalar o Ajdt:
 
@@ -90,5 +94,11 @@ Fim!
 4 - Vá Novamente em MessengerConcurrentWEB - > Configure -> Convert to AspectJ Project
 
 
+Fim!
 
+Duvidas?
+
+Entre em contato com diego@diegosousa.com
+
+[]'s
 
