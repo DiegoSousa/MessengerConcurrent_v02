@@ -10,7 +10,7 @@ More Information: http://goo.gl/8Ywy1
 
 <h1>Requirements:
 
-<li><a>Apache Tomcat 7+<br /><a></li>
+<ul>Apache Tomcat 7+<br /></ul>
 JDK 6+<br />
 Eclipse Java EE indigo+<br />
 AJDT (AspectJ Development Tools)¹<br />
