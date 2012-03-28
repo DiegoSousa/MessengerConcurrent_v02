@@ -2,7 +2,7 @@
 
 Teacher: Ayla Rebouças - http://goo.gl/p2urH
 
-Name Project: Evitando Falsos Positivos em Testes de Sistemas Multi-threaded com a abordagem	
+Project Name: Evitando Falsos Positivos em Testes de Sistemas Multi-threaded com a abordagem	
 “Thread Control for Tests”
 
 More Information: http://goo.gl/8Ywy1
