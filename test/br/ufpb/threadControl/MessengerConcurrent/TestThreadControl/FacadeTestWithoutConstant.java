@@ -594,6 +594,8 @@ public class FacadeTestWithoutConstant {
 		threadControl.prepare(getAddPromotionFinishedState(1));
 		threadControl.proceed();
 		facade.addPromotion(promotion);
+
+		System.out.println(" aqui0");
 		threadControl.waitUntilStateIsReached();
 
 		threadControl.prepare(getListOfPromotionFinishedState(1));
@@ -605,6 +607,8 @@ public class FacadeTestWithoutConstant {
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
+
+		System.out.println(" aqui1");
 		threadControl.waitUntilStateIsReached();
 
 		assertEquals(1, promotionAux.size());
@@ -616,6 +620,8 @@ public class FacadeTestWithoutConstant {
 
 		threadControl.prepare(getEditPromotionFinishedState(1));
 		facade.editPromotion(promotion);
+
+		System.out.println(" aqui2");
 		threadControl.waitUntilStateIsReached();
 		
 		threadControl.prepare(getListOfPromotionFinishedState(2));// <--OLHAR
@@ -627,7 +633,8 @@ public class FacadeTestWithoutConstant {
 			promotionAux = copyListOfAllPromotion.take();				
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
-		}		
+		}
+		System.out.println(" aqui3");
 		threadControl.waitUntilStateIsReached();//<--Bloqueado aqui.		
 		assertTrue(promotionAux.peek().getDiscountedPrice() == 1.20);
 		assertFalse(promotionAux.peek().getDiscountedPrice() == 1.00);
