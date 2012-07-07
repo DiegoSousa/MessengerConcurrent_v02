@@ -6,44 +6,53 @@ import br.ufpb.threadControl.messengerConcurrent.entity.Customer;
 import br.ufpb.threadControl.messengerConcurrent.manager.ICustomerManager;
 
 /**
- * Description Class
+ * Implementation of Customer DAO with List
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
  */
 public class CustomerDAOList implements ICustomerManager{
 
 	@Override
-	public Customer addCustomer(Customer customer) throws Exception {
+	public Customer addCustomer(Customer customer) {
 		return null;
 	}
 
 	@Override
-	public Customer removeCustomer(Customer customer) throws Exception {
+	public Customer removeCustomer(Customer customer) {
 		return null;
 	}
 
 	@Override
-	public Customer editCustomer(Customer customer) throws Exception {
+	public Customer restoreCustomer(String cpf){
 		return null;
 	}
 
 	@Override
-	public Customer findCustomerById(long id) throws Exception {
+	public Customer editCustomer(Customer customer) {
 		return null;
 	}
 
 	@Override
-	public Customer searchCustomerByLogin(String login) throws Exception {
+	public Customer searchCustomerById(long id) {
 		return null;
 	}
 
 	@Override
-	public List<Customer> getListOfCustomers() throws Exception {
+	public Customer searchCustomerByLogin(String login) {
 		return null;
 	}
+
+	@Override
+	public Customer searchCustomerByCpf(String cpf) {
+		return null;
+	}
+
+	@Override
+	public List<Customer> getListOfCustomers() {
+		return null;
+	}
+
+	
 
 }

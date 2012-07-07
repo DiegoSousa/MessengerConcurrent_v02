@@ -1,90 +1,149 @@
 package br.ufpb.threadControl.messengerConcurrent.entity;
 
 import java.io.Serializable;
+import java.util.Map;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entity Purchase
  * 
- * @author diego sousa - www.diegosousa.com
+ * @author Diego Sousa - www.diegosousa.com
  * @version 2.0
  * 
- *          copyright (c) 2012 diego sousa de azevedo
+ *          Copyright (C) 2012 Diego Sousa de Azevedo
  */
 
 @Entity
-@Table(name = "purchase")
+@Table(name = "purchases")
 @XmlRootElement
 public class Purchase implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
-	@Column(name = "id_purchase")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id_purchase;
 	@ManyToOne
-	@JoinColumn(name = "id_customer", nullable = false)
+	@JoinColumn(name = "id_customer")
 	private Customer customer;
-	@ManyToOne
-	@JoinColumn(name = "id_product", nullable = false)
-	private Product product;
-	@Column(name = "quantityProduct")
-	private int quantity;
-
-	public Purchase(Customer customer, Product product, int quantity) {
-		this.customer = customer;
-		this.product = product;
-		this.quantity = quantity;
-	}
+	@ElementCollection
+	@CollectionTable(name = "purchased_products", joinColumns = { @JoinColumn(name = "id_purchaseFK", referencedColumnName = "id_purchase") })
+	@Column(name = "quantity_product")	
+	@MapKeyJoinColumn(name = "id_productsFK", referencedColumnName = "id_product", table = "Products", nullable = false)
+	// Key (Object Product) - Product Purchase and Value (Integer) - is quantity
+	// of product.
+	private Map<Product,Integer > listProducts = null;
+	@ElementCollection
+	@CollectionTable(name = "purchased_promotions", joinColumns = { @JoinColumn(name = "id_purchaseFK", referencedColumnName = "id_purchase") })
+	@Column(name = "quantity_promotion")
+	@MapKeyJoinColumn(name = "id_promotionsFK", referencedColumnName = "id_promotion", table = "Promotions", nullable = false)
+	// Key (Object Promotion) - Promotion Purchase and Value (Integer) - is
+	// quantity of promotion.
+	private Map<Promotion, Integer> listPromotions = null;
+	@Column(nullable = false)
+	private double finalPrice;
 
 	public Purchase() {
 	}
 
+	public Purchase(Customer customer, Map<Product, Integer> listProducts,
+			Map<Promotion, Integer> listPromotions) {
+		this.customer = customer;
+		this.listProducts = listProducts;
+		this.listPromotions = listPromotions;
+	}
+
+	/**
+	 * @return the id
+	 */
 	public long getId() {
-		return id;
+		return id_purchase;
 	}
 
+	/**
+	 * @param id
+	 *            the id to set
+	 */
 	public void setId(long id) {
-		this.id = id;
+		this.id_purchase = id;
 	}
 
-	public Customer getcustomer() {
+	/**
+	 * @return the customer
+	 */
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setcustomer(Customer customer) {
+	/**
+	 * @param customer
+	 *            the customer to set
+	 */
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public Product getProduct() {
-		return product;
+	/**
+	 * @return the listProducts
+	 */
+	public Map<Product, Integer> getListProducts() {
+		return listProducts;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	/**
+	 * @param listProducts
+	 *            the listProducts to set
+	 */
+	public void setListProducts(Map<Product, Integer> listProducts) {
+		this.listProducts = listProducts;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	/**
+	 * @return the listPromotions
+	 */
+	public Map<Promotion, Integer> getListPromotions() {
+		return listPromotions;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	/**
+	 * @param listPromotions
+	 *            the listPromotions to set
+	 */
+	public void setListPromotions(Map<Promotion, Integer> listPromotions) {
+		this.listPromotions = listPromotions;
+	}
+
+	/**
+	 * @return the finalPrice
+	 */
+	public double getFinalPrice() {
+		return finalPrice;
+	}
+
+	/**
+	 * @param finalPrice
+	 *            the finalPrice to set
+	 */
+	public void setFinalPrice(double finalPrice) {
+		this.finalPrice = finalPrice;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (id_purchase ^ (id_purchase >>> 32));
 		return result;
 	}
 
@@ -97,15 +156,20 @@ public class Purchase implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Purchase other = (Purchase) obj;
-		if (id != other.id)
+		if (id_purchase != other.id_purchase)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Purchase \n Code" + id + ", Customer: " + customer
-				+ ", Product: " + product +"Quantity of products purchased: "+ quantity;
+		return "Purchase\nCode Purchase: "
+				+ id_purchase
+				+ "\nCustomer\n"
+				+ customer
+				+ (listProducts != null ? "\nProduct: " + listProducts : "")
+				+ (listPromotions != null ? "\nPromotion: " + listPromotions
+						: "") + "\nFinal Price: " + finalPrice;
 	}
 
 }

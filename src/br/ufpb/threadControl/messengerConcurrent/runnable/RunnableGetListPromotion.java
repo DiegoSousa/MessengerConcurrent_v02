@@ -6,7 +6,7 @@ package br.ufpb.threadControl.messengerConcurrent.runnable;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-import br.ufpb.threadControl.messengerConcurrent.entity.Product;
+import br.ufpb.threadControl.messengerConcurrent.entity.Promotion;
 import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
 
 /**
@@ -17,18 +17,18 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
  */
 
 public class RunnableGetListPromotion implements Runnable {
-	private IPromotionManager promotionCrud;
-	private BlockingQueue<List<Product>> list;
+	private IPromotionManager iPromotionManager;
+	private BlockingQueue<List<Promotion>> list;
 
-	public RunnableGetListPromotion(BlockingQueue<List<Product>> listPromotion, IPromotionManager iPromotionManager) {
-		this.promotionCrud = iPromotionManager;
+	public RunnableGetListPromotion(BlockingQueue<List<Promotion>> listPromotion, IPromotionManager iPromotionManager) {
+		this.iPromotionManager = iPromotionManager;
 		this.list = listPromotion;
 	}
 
 	@Override
 	public void run() {
 		try {
-			list.put(promotionCrud.getListPromotion());
+			list.put(iPromotionManager.getListPromotion());			
 		} catch (Exception e) {
 			e.getMessage();
 		}

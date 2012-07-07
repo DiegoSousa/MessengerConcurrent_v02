@@ -3,27 +3,27 @@ package br.ufpb.threadControl.messengerConcurrent.entity;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Entity customer
+ * Entity Customer
  * 
  * @author Diego Sousa - www.diegosousa.com
- * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
+ * @version 2.0
+ * 
+ *          Copyright (C) 2012 Diego Sousa de Azevedo
  */
 
 @Entity
@@ -34,11 +34,12 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "id_customer")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id_customer;
 	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false, unique = true, length = 14)
+	private String cpf;
 	@Column(unique = true, length = 16)
 	private String phone;
 	@Column(nullable = false, unique = true)
@@ -48,18 +49,18 @@ public class Customer implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(length = 10, name = "date_of_birth", nullable = false)
 	private Calendar birthday;
-	@OneToMany(mappedBy = "customer")
-	private List<Purchase> purchase;
+	@Column(nullable = false)
+	private boolean isActive = true;
 
-	public Customer(String name, String phone, String login, String password,
-			int birthday, int monthOfBirth, int yearOfbirth) {
+	public Customer(String name, String cpf, String phone, String login,
+			String password, int birthday, int monthOfBirth, int yearOfbirth) {
 		this.name = name;
+		this.cpf = cpf;
 		this.phone = phone;
 		this.login = login;
 		this.password = password;
 		this.birthday = Calendar.getInstance();
 		this.birthday.set(yearOfbirth, monthOfBirth - 1, birthday);
-		this.purchase = new ArrayList<Purchase>();
 	}
 
 	public Customer() {
@@ -70,7 +71,7 @@ public class Customer implements Serializable {
 	 * @return the id
 	 */
 	public long getId() {
-		return id;
+		return id_customer;
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class Customer implements Serializable {
 	 *            the id to set
 	 */
 	public void setId(long id) {
-		this.id = id;
+		this.id_customer = id;
 	}
 
 	/**
@@ -94,6 +95,21 @@ public class Customer implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the cpf
+	 */
+	public String getCpf() {
+		return cpf;
+	}
+
+	/**
+	 * @param cpf
+	 *            the cpf to set
+	 */
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	/**
@@ -166,26 +182,26 @@ public class Customer implements Serializable {
 		}
 
 		this.birthday.setTime(dateAux);
-
 	}
 
 	/**
-	 * @return the purchase
+	 * @return the isActive
 	 */
-	public List<Purchase> getPurchase() {
-		return purchase;
+	public boolean getIsActive() {
+		return isActive;
 	}
 
 	/**
-	 * @param purchase
-	 *            the purchase to set
+	 * @param isActive
+	 *            the isActive to set
 	 */
-	public void setPurchase(List<Purchase> purchase) {
-		this.purchase = purchase;
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	public String toString() {
-		return "Name: " + getName() + "\nPhone: " + getPhone() + "\nLogin: "
-				+ getLogin() + "\nDate Of Birthday: " + getBirthday();
+		return "Name: " + getName() + "\nCPF: " + getCpf() + "\nPhone: "
+				+ getPhone() + "\nLogin: " + getLogin()
+				+ "\nDate Of Birthday: " + getBirthday();
 	}
 }

@@ -15,18 +15,18 @@ import br.ufpb.threadControl.messengerConcurrent.manager.ICustomerManager;
 
 public class RunnableAddCustomer implements Runnable {
 
-	private ICustomerManager customerCrud;
+	private ICustomerManager iCustomerManager;
 	private Customer customer;
 
 	public RunnableAddCustomer(Customer customer, ICustomerManager iCustomerManager) {
-		this.customerCrud = iCustomerManager;
+		this.iCustomerManager = iCustomerManager;
 		this.customer = customer;
 	}
 
 	@Override
 	public void run() {
 		try {
-			this.customerCrud.addCustomer(customer);
+			this.iCustomerManager.addCustomer(customer);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

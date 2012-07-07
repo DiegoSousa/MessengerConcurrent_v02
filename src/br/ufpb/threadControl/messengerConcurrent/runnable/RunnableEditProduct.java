@@ -14,18 +14,18 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IProductManager;
  */
 
 public class RunnableEditProduct implements Runnable {
-	private IProductManager productCrud;
+	private IProductManager iproductManager;
 	private Product product;
 
 	public RunnableEditProduct(Product product, IProductManager iProductManager) {
-		this.productCrud = iProductManager;
+		this.iproductManager = iProductManager;
 		this.product = product;
 	}
 
 	@Override
 	public void run() {
 		try {
-			this.productCrud.editProduct(product);
+			this.iproductManager.editProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();	
 		}

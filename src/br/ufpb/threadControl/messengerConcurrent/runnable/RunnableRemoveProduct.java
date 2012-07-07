@@ -13,18 +13,18 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IProductManager;
  * @version 1.0 Copyright (C) 2012 Diego Sousa de Azevedo
  */
 public class RunnableRemoveProduct implements Runnable {
-	private IProductManager productCrud;
+	private IProductManager iProductManager;
 	private Product product;
 
 	public RunnableRemoveProduct(Product product, IProductManager iProductManager) {
-		this.productCrud = iProductManager;
+		this.iProductManager = iProductManager;
 		this.product = product;
 	}
 
 	@Override
 	public void run() {
 		try {			
-			this.productCrud.removeProduct(product);
+			this.iProductManager.removeProduct(product);
 		} catch (Exception e) {
 			e.printStackTrace();	
 		}

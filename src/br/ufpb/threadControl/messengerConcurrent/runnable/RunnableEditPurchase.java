@@ -14,20 +14,17 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IPurchaseManager;
  */
 public class RunnableEditPurchase implements Runnable {
 
-	private IPurchaseManager purchaseCrud;
+	private IPurchaseManager iPurchaseManager;
 	private Purchase purchase;
 
-	public RunnableEditPurchase(Purchase purchase, IPurchaseManager iPurchaseManager) {
-		this.purchaseCrud = iPurchaseManager;
+	public RunnableEditPurchase(Purchase purchase,
+			IPurchaseManager iPurchaseManager) {
 		this.purchase = purchase;
+		this.iPurchaseManager = iPurchaseManager;
 	}
 
 	@Override
 	public void run() {
-		try {
-			purchaseCrud.editPurchase(purchase);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		iPurchaseManager.editPurchase(purchase);
 	}
 }

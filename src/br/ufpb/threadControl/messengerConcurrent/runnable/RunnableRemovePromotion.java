@@ -3,7 +3,7 @@
  */
 package br.ufpb.threadControl.messengerConcurrent.runnable;
 
-import br.ufpb.threadControl.messengerConcurrent.entity.Product;
+import br.ufpb.threadControl.messengerConcurrent.entity.Promotion;
 import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
 
 /**
@@ -15,17 +15,17 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
 
 public class RunnableRemovePromotion implements Runnable {
 	private IPromotionManager promotionManager;
-	private Product product;
+	private Promotion promotion;
 
-	public RunnableRemovePromotion(Product product, IPromotionManager iPromotionManager) {
+	public RunnableRemovePromotion(Promotion promotion, IPromotionManager iPromotionManager) {
 		this.promotionManager = iPromotionManager;
-		this.product = product;
+		this.promotion = promotion;
 	}
 
 	@Override
 	public void run() {
 		try {
-			promotionManager.removePromotion(product);
+			promotionManager.removePromotion(promotion);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

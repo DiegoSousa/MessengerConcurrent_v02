@@ -8,51 +8,43 @@ import br.ufpb.threadControl.messengerConcurrent.entity.Purchase;
 import br.ufpb.threadControl.messengerConcurrent.manager.IPurchaseManager;
 
 /**
- * Description Class
+ * Implementation of Purchase DAO with List
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
  */
 public class PurchaseDAOList implements IPurchaseManager {
 
 	@Override
-	public Purchase purchaseProduct(Purchase purchase) throws Exception {
+	public Purchase addPurchase(Purchase purchase) {
 		return null;
 	}
 
 	@Override
-	public Purchase removePurchase(Purchase purchase) throws Exception {
+	public Purchase removePurchase(Purchase purchase) {
 		return null;
 	}
 
 	@Override
-	public Purchase editPurchase(Purchase purchase) throws Exception {
+	public List<Purchase> searchPurchaseByProduct(Product product) {
 		return null;
 	}
 
 	@Override
-	public Purchase searchPurchase(Product product, Customer customer)
-			throws Exception {
+	public List<Purchase> getListPurchase() {
 		return null;
 	}
 
 	@Override
-	public List<Purchase> getListPurchase() throws Exception {
+	public List<Purchase> searchPurchasesOfACustomer(Customer customer) {
 		return null;
 	}
 
 	@Override
-	public List<Purchase> getPurchasesOfACustomer(Customer customer)
-			throws Exception {
+	public Purchase editPurchase(Purchase purchase) {
 		return null;
 	}
 
-	@Override
-	public List<Product> getListProductSold() throws Exception {
-		return null;
-	}
+	
 
 }

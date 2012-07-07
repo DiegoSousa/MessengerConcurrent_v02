@@ -4,7 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Class responsible for operations with the database. Example: Create Database,
+ * Class responsible for operations with the database. Example: Create Database and
  * liberate access to EntityManagerFactory
  * 
  * @author Diego Sousa, diego[at]diegosousa[dot]com

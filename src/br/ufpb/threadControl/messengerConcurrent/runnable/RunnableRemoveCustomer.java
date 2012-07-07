@@ -16,18 +16,18 @@ import br.ufpb.threadControl.messengerConcurrent.manager.ICustomerManager;
  */
 
 public class RunnableRemoveCustomer implements Runnable {
-	private ICustomerManager customerCrud;
+	private ICustomerManager iCustomerManager;
 	private Customer customer;
 
 	public RunnableRemoveCustomer(Customer customer, ICustomerManager iCustomerManager) {
-		customerCrud = iCustomerManager;
+		this.iCustomerManager = iCustomerManager;
 		this.customer = customer;
 	}
 
 	@Override
 	public void run() {
 		try {
-			customerCrud.removeCustomer(customer);
+			iCustomerManager.removeCustomer(customer);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -17,21 +17,40 @@ import br.ufpb.threadControl.messengerConcurrent.entity.Purchase;
  */
 public interface IPurchaseManager {
 
-	public abstract Purchase purchaseProduct(Purchase purchase)
-			throws Exception;
+	/**
+	 * @param purchase
+	 * @return
+	 */
+	public abstract Purchase addPurchase(Purchase purchase);
 
-	public abstract Purchase removePurchase(Purchase purchase) throws Exception;
+	/**
+	 * @param purchase
+	 * @return
+	 */
+	public abstract Purchase removePurchase(Purchase purchase);
 
-	public abstract Purchase editPurchase(Purchase purchase) throws Exception;
+	/**
+	 * @param purchase
+	 * @return
+	 */
+	public abstract Purchase editPurchase(Purchase purchase);
 
-	public abstract Purchase searchPurchase(Product product, Customer customer)
-			throws Exception;
+	/**
+	 * @param product
+	 * @return
+	 */
 
-	public abstract List<Purchase> getListPurchase() throws Exception;
+	public abstract List<Purchase> searchPurchaseByProduct(Product product);
 
-	public abstract List<Purchase> getPurchasesOfACustomer(Customer customer)
-			throws Exception;
+	/**
+	 * @param customer
+	 * @return
+	 */
+	public abstract List<Purchase> searchPurchasesOfACustomer(Customer customer);
 
-	public abstract List<Product> getListProductSold() throws Exception;
+	/**
+	 * @return
+	 */
+	public abstract List<Purchase> getListPurchase();
 
 }

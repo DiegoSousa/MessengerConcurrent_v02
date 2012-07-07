@@ -3,7 +3,7 @@
  */
 package br.ufpb.threadControl.messengerConcurrent.runnable;
 
-import br.ufpb.threadControl.messengerConcurrent.entity.Product;
+import br.ufpb.threadControl.messengerConcurrent.entity.Promotion;
 import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
 
 /**
@@ -14,26 +14,17 @@ import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
  */
 
 public class RunnableAddPromotion implements Runnable {
-	private IPromotionManager promotionManager;
-	private Product product;
-	private int quantityProduct;
-	private double promotionalPrice;
+	private IPromotionManager iPromotionManager;
+	private Promotion promotion;
 
-	public RunnableAddPromotion(Product product, int quantityProduct,
-			double promotionalPrice, IPromotionManager iPromotionManager) {
-		this.promotionManager = iPromotionManager;
-		this.product = product;
-		this.quantityProduct = quantityProduct;
-		this.promotionalPrice = promotionalPrice;
+	public RunnableAddPromotion(Promotion promotion,
+			IPromotionManager iPromotionManager) {
+		this.iPromotionManager = iPromotionManager;
+		this.promotion = promotion;
 	}
 
 	@Override
 	public void run() {
-		try {
-			this.promotionManager.addPromotion(product, quantityProduct,
-					promotionalPrice);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.iPromotionManager.addPromotion(promotion);
 	}
 }

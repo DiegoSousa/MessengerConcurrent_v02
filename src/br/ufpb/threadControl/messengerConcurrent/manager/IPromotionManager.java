@@ -3,25 +3,65 @@ package br.ufpb.threadControl.messengerConcurrent.manager;
 import java.util.List;
 
 import br.ufpb.threadControl.messengerConcurrent.entity.Product;
+import br.ufpb.threadControl.messengerConcurrent.entity.Promotion;
 
 /**
- * Description Class
+ * Interface Promotion Manager
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 
+ * 
+ * Copyright (C) 2012 Diego Sousa de Azevedo
  */
+
 public interface IPromotionManager {
 
-	public abstract Product addPromotion(Product product, int quantityProduct,
-			double promotionalPrice) throws Exception;
+	/**
+	 * @param promotion
+	 * @return
+	 */
+	Promotion addPromotion(Promotion promotion);
 
-	public abstract Product removePromotion(Product product) throws Exception;
+	/**
+	 * @param promotion
+	 * @return
+	 */
+	Promotion removePromotion(Promotion promotion);
 
-	public abstract Product editPromotion(Product product) throws Exception;
-	
-	public abstract List<Product> getListPromotion() throws Exception;
+	/**
+	 * @param namePromotion
+	 * @return
+	 */
+	Promotion restorePromotion(String namePromotion);
+
+	/**
+	 * @param promotion
+	 * @return
+	 */
+	Promotion editPromotion(Promotion promotion);
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	Promotion searchPromotionById(long id);
+
+	/**
+	 * @param name
+	 * @return
+	 */
+	Promotion searchPromotionByName(String name);
+
+	/**
+	 * @param product
+	 * @return
+	 */
+	List<Promotion> searchPromotionByProduct(Product product);
+
+	/**
+	 * @return
+	 */
+	List<Promotion> getListPromotion();
+
 
 }

@@ -6,44 +6,48 @@ import br.ufpb.threadControl.messengerConcurrent.entity.Product;
 import br.ufpb.threadControl.messengerConcurrent.manager.IProductManager;
 
 /**
- * Description Class
+ * Implementation of Product DAO with List
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
  */
 public class ProductDAOList implements IProductManager {
 
 	@Override
-	public Product addProduct(Product product) throws Exception {
+	public Product addProduct(Product product) {
+		return null;
+	}
+	
+	@Override
+	public Product removeProduct(Product product) {
 		return null;
 	}
 
 	@Override
-	public Product removeProduct(Product product) throws Exception {
+	public Product restoreProduct(String nameProduct) {
 		return null;
 	}
 
 	@Override
-	public Product editProduct(Product product) throws Exception {
+	public Product editProduct(Product product) {
 		return null;
 	}
 
 	@Override
-	public Product findProductById(Long id) throws Exception {
+	public Product searchProductById(long id) {
 		return null;
 	}
 
 	@Override
-	public Product searchProductByName(String name) throws Exception {
+	public Product searchProductByName(String name) {
 		return null;
 	}
 
 	@Override
-	public List<Product> getListProduct() throws Exception {
+	public List<Product> getListProduct() {
 		return null;
 	}
+
+	
 
 }

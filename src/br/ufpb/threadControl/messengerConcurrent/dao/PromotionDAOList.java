@@ -3,38 +3,60 @@ package br.ufpb.threadControl.messengerConcurrent.dao;
 import java.util.List;
 
 import br.ufpb.threadControl.messengerConcurrent.entity.Product;
+import br.ufpb.threadControl.messengerConcurrent.entity.Promotion;
 import br.ufpb.threadControl.messengerConcurrent.manager.IPromotionManager;
 
 /**
- * Description Class
+ * Implementation of Promotion DAO with List
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
  */
+
 public class PromotionDAOList implements IPromotionManager {
 
 	@Override
-	public Product addPromotion(Product product, int quantityProduct,
-			double promotionalPrice) throws Exception {
+	public Promotion addPromotion(Promotion promotion) {
 		return null;
 	}
 
 	@Override
-	public Product removePromotion(Product product) throws Exception {
+	public Promotion removePromotion(Promotion promotion) {
 		return null;
 	}
 
 	@Override
-	public Product editPromotion(Product product) throws Exception {
+	public Promotion restorePromotion(String namePromotion) {
 		return null;
 	}
 
 	@Override
-	public List<Product> getListPromotion() throws Exception {
+	public Promotion editPromotion(Promotion promotion) {
 		return null;
 	}
+
+	@Override
+	public Promotion searchPromotionById(long id) {
+		return null;
+	}
+
+	@Override
+	public Promotion searchPromotionByName(String name) {
+		return null;
+	}
+
+	@Override
+	public List<Promotion> searchPromotionByProduct(Product product) {
+		return null;
+	}
+
+	@Override
+	public List<Promotion> getListPromotion() {
+		return null;
+	}
+
+	
+
+
 
 }

@@ -10,66 +10,80 @@ import br.ufpb.threadControl.messengerConcurrent.entity.Customer;
  * @author Diego Sousa, diego[at]diegosousa[dot]com
  * @version 0.0.1
  * @since
- *
- * Copyright (C) 2012 
+ * 
+ *        Copyright (C) 2012
  */
 public interface ICustomerManager {
 
 	/**
 	 * @param customer
 	 *            Object customer
-	 * @throws Exception
+	 * 
 	 * @return Object customer
 	 */
 
-	public abstract Customer addCustomer(Customer customer) throws Exception;
+	public abstract Customer addCustomer(Customer customer);
 
 	/**
 	 * 
 	 * @param customer
 	 *            Object customer
-	 * @throws Exception
+	 * 
 	 * @return Object customer
 	 */
 
-	public abstract Customer removeCustomer(Customer customer) throws Exception;
+	public abstract Customer removeCustomer(Customer customer);
+
+	/**
+	 * @param cpf
+	 * @throws Exception
+	 * @return Object customer
+	 * 
+	 */
+	public abstract Customer restoreCustomer(String cpf);
 
 	/**
 	 * 
 	 * @param customer
 	 *            Object customer
-	 * @throws Exception
+	 * 
 	 * @return Object customer
 	 */
 
-	public abstract Customer editCustomer(Customer customer) throws Exception;
+	public abstract Customer editCustomer(Customer customer);
 
 	/**
 	 * 
 	 * @param id
 	 *            belonging to the customer that will be searched
-	 * @throws Exception
+	 * 
 	 * @return Object customer
 	 */
 
-	public abstract Customer findCustomerById(long id) throws Exception;
+	public abstract Customer searchCustomerById(long id);
 
 	/**
 	 * 
 	 * @param login
 	 *            belonging to the customer that will be searched
-	 * @throws Exception
+	 * 
 	 * @return Object customer
 	 */
 
-	public abstract Customer searchCustomerByLogin(String login)
-			throws Exception;
+	public abstract Customer searchCustomerByLogin(String login);
 
 	/**
-	 * @throws Exception
+	 * @param cpf
+	 * @return
+	 * 
+	 */
+	public abstract Customer searchCustomerByCpf(String cpf);
+
+	/**
+	 * 
 	 * @return List of all customer
 	 */
-	
-	public abstract List<Customer> getListOfCustomers() throws Exception;
+
+	public abstract List<Customer> getListOfCustomers();
 
 }

@@ -1,14 +1,12 @@
 package br.ufpb.threadControl.messengerConcurrent.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,7 +14,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Entity Product
  * 
  * @author Diego Sousa - www.diegosousa.com
- * @version 2.0 Copyright (C) 2012 Diego Sousa de Azevedo
+ * @version 2.0
+ * 
+ *          Copyright (C) 2012 Diego Sousa de Azevedo
  */
 
 @Entity
@@ -26,28 +26,18 @@ public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
-	@Column(name = "id_product")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id_product;
 	@Column(nullable = false, unique = true)
 	private String name;
 	@Column(nullable = false)
 	private double price;
 	@Column(nullable = false)
 	private int quantity;
-	@Column(unique = true)
-	private static long promotionCde;
-	@Column
-	private double promotionalPrice = 0;
-	@Column
-	private int quantityPromotion = 0;
 	@Column(nullable = false)
-	private boolean isPromotional = false;
-	@OneToMany(mappedBy = "product")
-	private List<Purchase> purchase;
+	private boolean isActive = true;
 
 	public Product(String name, double price, int quantity) {
-		this.purchase = new ArrayList<Purchase>();
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
@@ -60,7 +50,7 @@ public class Product implements Serializable {
 	 * @return the id
 	 */
 	public long getId() {
-		return id;
+		return id_product;
 	}
 
 	/**
@@ -68,7 +58,7 @@ public class Product implements Serializable {
 	 *            the id to set
 	 */
 	public void setId(long id) {
-		this.id = id;
+		this.id_product = id;
 	}
 
 	/**
@@ -116,89 +106,28 @@ public class Product implements Serializable {
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}	
-	
-	/**
-	 * @return the promotioncode
-	 */
-	public static long getPromotioncode() {
-		return promotionCde;
 	}
 
 	/**
-	 * @param promotioncode the promotioncode to set
+	 * @return the isActive
 	 */
-	public static void setPromotioncode(long promotioncode) {
-		Product.promotionCde = promotioncode;
+	public boolean getIsActive() {
+		return isActive;
 	}
 
 	/**
-	 * @return the promotionalPrice
+	 * @param isActive
+	 *            the isActive to set
 	 */
-	public double getPromotionalPrice() {
-		return promotionalPrice;
+	public void setIsActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
-	/**
-	 * @param promotionalPrice
-	 *            the promotionalPrice to set
-	 * @throws Exception
-	 */
-	public void setPromotionalPrice(double promotionalPrice) {
-		this.promotionalPrice = promotionalPrice;
-	}
-
-	/**
-	 * @return the quantityPromotion
-	 */
-	public int getQuantityPromotion() {
-		return quantityPromotion;
-	}
-
-	/**
-	 * @param quantityPromotion
-	 *            the quantityPromotion to set
-	 * @throws Exception
-	 */
-	public void setQuantityPromotion(int quantityPromotion) {
-		this.quantityPromotion = quantityPromotion;
-	}
-
-	/**
-	 * @return the isPromotional
-	 */
-	public boolean getIsPromotional() {
-		return isPromotional;
-	}
-
-	/**
-	 * @param isPromotional
-	 *            the isPromotional to set
-	 */
-	public void setIsPromotional(boolean isPromotional) {
-		this.isPromotional = isPromotional;
-	}
-
-	/**
-	 * @return the promotions
-	 */
-	public List<Purchase> getPurchase() {
-		return purchase;
-	}
-
-	/**
-	 * @param promotions
-	 *            the promotions to set
-	 */
-	public void setPurchase(List<Purchase> purchase) {
-		this.purchase = purchase;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (id_product ^ (id_product >>> 32));
 		return result;
 	}
 
@@ -211,17 +140,16 @@ public class Product implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if (id != other.id)
+		if (id_product != other.id_product)
 			return false;
 		return true;
 	}
 
 	public String toString() {
 
-		return "\nProduct: " + this.name + "\nProduct Code: " + this.id
-				+ "\nPrice: " + this.price + "\nQuantity: " + this.quantity
-				+ "\nPromotional price: " + this.promotionalPrice
-				+ "\nNumber of Promotional Products: " + this.quantityPromotion;
+		return "\nProduct Name: " + this.name + "\nProduct Code: "
+				+ this.id_product + "\nPrice: " + this.price + "\nQuantity: "
+				+ this.quantity;
 	}
 
 }

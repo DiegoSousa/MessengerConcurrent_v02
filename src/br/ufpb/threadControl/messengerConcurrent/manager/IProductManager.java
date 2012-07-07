@@ -5,26 +5,57 @@ import java.util.List;
 import br.ufpb.threadControl.messengerConcurrent.entity.Product;
 
 /**
- * Description Class
+ * Interface Product Manager
  * 
- * @author Diego Sousa, diego[at]diegosousa[dot]com
- * @version 0.0.1
- * @since
- *
- * Copyright (C) 2012 
+ * @author Diego Sousa - www.diegosousa.com
+ * @version 2.0 
+ * 
+ * Copyright (C) 2012 Diego Sousa de Azevedo
  */
+
 public interface IProductManager {
 
-	public abstract Product addProduct(Product product) throws Exception;
+	/**
+	 * @param product
+	 * @return
+	 */
+	Product addProduct(Product product);
 
-	public abstract Product removeProduct(Product product) throws Exception;
+	/**
+	 * @param nameProduct
+	 * @return
+	 */
+	Product restoreProduct(String nameProduct);
 
-	public abstract Product editProduct(Product product) throws Exception;
+	/**
+	 * @param product
+	 * @return
+	 */
+	Product removeProduct(Product product);
 
-	public abstract Product findProductById(Long id) throws Exception;
+	/**
+	 * @param product
+	 * @return
+	 */
+	Product editProduct(Product product);
 
-	public abstract Product searchProductByName(String name) throws Exception;
-	
-	public abstract List<Product> getListProduct() throws Exception;
+	/**
+	 * @param id
+	 * @return
+	 */
+	Product searchProductById(long id);
+
+	/**
+	 * @param name
+	 * @return
+	 */
+	Product searchProductByName(String name);	
+
+	/**
+	 * @return
+	 */
+	List<Product> getListProduct();
+		
+
 
 }
